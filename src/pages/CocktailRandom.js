@@ -1,26 +1,16 @@
-import { useState } from 'react'
 import Cocktail from '../components/Cocktail'
-
-const URL = 'https://www.thecocktaildb.com/api/json/v1/1'
+import useRandomCocktail from '../hooks/useRandomCocktail'
 
 export default function CocktailRandom() {
-  const [ randomCocktail, setRandomCocktail ] = useState([])
-
-  const getRandomCocktail = (letter) => {
-    fetch(`${URL}/random.php`)
-      .then(res => res.json())
-      .then(response => {
-        const { drinks } = response
-        setRandomCocktail(drinks)
-      })
-  }
+  const path = 'random.php'
+  const { cocktails, getCocktailsFromApi } = useRandomCocktail({path})
 
   return (
     <div>
       <h2>Random Cocktail</h2>
-      <button onClick={getRandomCocktail}>Random</button>
+      <button onClick={getCocktailsFromApi}>Random</button>
       {
-        randomCocktail?.map(cocktail => (
+        cocktails?.map(cocktail => (
           <Cocktail
             key={cocktail.idDrink}
             idDrink={cocktail.idDrink}

@@ -1,26 +1,8 @@
-import { useState } from 'react'
 import Cocktail from '../components/Cocktail'
-
-const URL = 'https://www.thecocktaildb.com/api/json/v1/1'
+import useSearch from '../hooks/useSearch'
 
 export default function Search() {
-  const [ cocktails, setCocktails ] = useState([])
-  const [ keyword, setKeyword ] = useState('')
-  
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    fetch(`${URL}/search.php?s=${keyword}`)
-      .then(res => res.json())
-      .then(response => {
-        const { drinks } = response
-        setCocktails(drinks)
-      })
-  }
-
-  const handleChange = (e) => {
-    const query = e.target.value
-    setKeyword(query)
-  }
+  const { cocktails, keyword, handleSubmit, handleChange } = useSearch()
 
   return (
     <div>

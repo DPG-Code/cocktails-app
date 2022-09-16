@@ -1,27 +1,17 @@
-import { useState } from 'react'
 import Cocktail from '../components/Cocktail'
-
-const URL = 'https://www.thecocktaildb.com/api/json/v1/1'
+import useCocktails from '../hooks/useCocktails'
 
 export default function CocktailsAlcholic() {
-  const [ cocktailIsAlcholic , setCoctailIsAlcholics ] = useState([])
-
-  const getCoctailsAlcholic = (alcholic) => {
-    fetch(`${URL}/filter.php?a=${alcholic}`)
-      .then(res => res.json())
-      .then(response => {
-        const { drinks } = response
-        setCoctailIsAlcholics(drinks)
-      })
-  }
+  const path = 'filter.php?a='
+  const { cocktails, getCocktailsFromApi } = useCocktails({path})
 
   return (
     <div>
       <h2>Filter Alcholic or No Alcholic</h2>
-      <button onClick={() => getCoctailsAlcholic('Alcoholic')}>Alcholic</button>
-      <button onClick={() => getCoctailsAlcholic('Non_Alcoholic')}>No Alcholic</button>
+      <button onClick={() => getCocktailsFromApi('Alcoholic')}>Alcholic</button>
+      <button onClick={() => getCocktailsFromApi('Non_Alcoholic')}>No Alcholic</button>
       {
-        cocktailIsAlcholic?.map(cocktail => (
+        cocktails?.map(cocktail => (
           <Cocktail
             key={cocktail.idDrink}
             idDrink={cocktail.idDrink}
