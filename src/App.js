@@ -1,14 +1,12 @@
-import './App.css';
+import Layout from './components/Layout';
 import CocktailRandom from './pages/CocktailRandom';
-import Search from './pages/Search';
-
-// `${URL}/lookup.php?i=${id}`
 
 function App() {
   return (
     <div className="App">
-      <Search />
-      <CocktailRandom />
+      <Layout>
+        <CocktailRandom />
+      </Layout>
     </div>
   );
 }

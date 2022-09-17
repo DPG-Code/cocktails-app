@@ -1,21 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { getResults } from '../services/getResults'
 
 export default function useSearch() {
   const [ cocktails, setCocktails ] = useState([])
-  const [ keyword, setKeyword ] = useState('')
+
+  const { query } = useParams()
   const path = 'search.php?s='
   
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const results = await getResults({path, keyword})
-    setCocktails(results)
-  }
+  useEffect(() => {
+    const getResultsApi = async ({path, query}) => {
+      const results = await getResults({path, query})
+      setCocktails(results)
+    }
+    getResultsApi({path, query})
+  }, [query])
 
-  const handleChange = (e) => {
-    const query = e.target.value
-    setKeyword(query)
-  }
-
-  return { cocktails, keyword, handleSubmit, handleChange }
+  return { cocktails }
 }

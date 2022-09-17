@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom"
 import useCocktailDetail from "../hooks/useCocktailDetail"
 import CocktailDetails from "../components/CocktailDetails"
+import Layout from "../components/Layout"
 
 export default function CocktailDetail() {
   const { id } = useParams()
   const { cocktail } = useCocktailDetail({id})
 
   return (
-    <div>
+    <Layout>
       {
         cocktail[0]
         ? <CocktailDetails
@@ -24,6 +25,6 @@ export default function CocktailDetail() {
         />
         : ''
       }
-    </div>
+    </Layout>
   )
 }

@@ -1,25 +1,25 @@
-import Cocktail from '../components/Cocktail'
-import useSearch from '../hooks/useSearch'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Search() {
-  const { cocktails, keyword, handleSubmit, handleChange } = useSearch()
+  const [ query, setQuery ] = useState('')
+  const navigate = useNavigate()
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    navigate(`/search/${query}`)
+  }
+
+  const handleChange = (e) => {
+    const inputValue = e.target.value
+    setQuery(inputValue)
+  }
 
   return (
-    <div>
-      <h2>Search Cocktail</h2>
+    <>
       <form onSubmit={handleSubmit}>
-        <input type="text" value={keyword} onChange={handleChange}/>
+        <input type="text" value={query} onChange={handleChange}/>
       </form>
-      {
-        cocktails?.map(cocktail => (
-          <Cocktail
-            key={cocktail.idDrink}
-            idDrink={cocktail.idDrink}
-            strDrink={cocktail.strDrink}
-            strDrinkThumb={cocktail.strDrinkThumb}
-          />
-        ))
-      }
-    </div>
+    </>
   )
 }
