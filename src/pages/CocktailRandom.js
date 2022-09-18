@@ -1,5 +1,4 @@
 import Cocktail from '../components/Cocktail'
-import LayoutResults from '../components/LayoutResults'
 import useRandomCocktail from '../hooks/useRandomCocktail'
 
 export default function CocktailRandom() {
@@ -7,26 +6,25 @@ export default function CocktailRandom() {
   const { cocktails, getCocktailsFromApi } = useRandomCocktail({path})
 
   return (
-    <div  className='w-full flex flex-col items-center flex-wrap justify-center gap-4'>
-      <h2 className='mt-20 mb-16 text-3xl text-center font-bold'>Random Cocktail</h2>
+    <div  className='z-30 w-full h-screen flex flex-col items-center flex-wrap justify-center gap-4'>
       <button
         onClick={getCocktailsFromApi}
-        className="py-2 px-4 bg-black text-sm text-white font-semibold rounded-lg"
+        className="mb-4 py-2 px-4 bg-[#000000ce] border-solid border border-white text-sm text-white font-semibold"
       >
-        Random
+        Get random Cocktail
       </button>
-      <LayoutResults>
-        {
-          cocktails?.map(cocktail => (
-            <Cocktail
-              key={cocktail.idDrink}
-              idDrink={cocktail.idDrink}
-              strDrink={cocktail.strDrink}
-              strDrinkThumb={cocktail.strDrinkThumb}
-            />
-          ))
-        }
-      </LayoutResults>
+      {
+        cocktails.length > 0
+        ? cocktails.map(cocktail => (
+          <Cocktail
+            key={cocktail.idDrink}
+            idDrink={cocktail.idDrink}
+            strDrink={cocktail.strDrink}
+            strDrinkThumb={cocktail.strDrinkThumb}
+          />
+        ))
+        : <div className='w-52 h-52 bg-black text-white text-5xl font-bold flex items-center justify-center'>¿?</div>
+      }
     </div>
   )
 }

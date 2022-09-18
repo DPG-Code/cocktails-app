@@ -9,19 +9,19 @@ export default function CocktailsAlcholic() {
 
   return (
     <Layout>
-      <h2 className='mt-20 mb-16 text-3xl text-center font-bold'>Filter by alcoholic or no alcoholic Cocktails!</h2>
+      <h2 className='mt-24 mb-12 text-3xl text-white text-center font-bold'>Filter by alcoholic or no alcoholic Cocktails!</h2>
       <div className='px-6 w-full flex items-center flex-wrap justify-center gap-4'>
         <button
         onClick={() => getCocktailsFromApi('Alcoholic')}
-          className="py-2 px-4 bg-black text-sm text-white font-semibold rounded-lg"
+          className="py-2 px-4 bg-[#000000ce] text-white font-bold border-solid border border-white"
         >
-          Alcholic
+          Alcoholic
         </button>
         <button
         onClick={() => getCocktailsFromApi('Non_Alcoholic')}
-          className="py-2 px-4 bg-black text-sm text-white font-semibold rounded-lg"
+          className="py-2 px-4 bg-[#000000ce] text-white font-bold border-solid border border-white"
         >
-          No Alcholic
+          No Alcoholic
         </button>
       </div>
       <LayoutResults>
