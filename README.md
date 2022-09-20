@@ -1,7 +1,7 @@
 Cocktails App 🍸
 
 ### 🥂 About The Project
-App XKCD Comics.
+Search your favorites cocktails, filter by first letter or alcoholic cocktails.
 
 ### 🥂 Built With
 - React.js
