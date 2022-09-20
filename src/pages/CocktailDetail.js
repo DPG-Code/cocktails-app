@@ -23,7 +23,9 @@ export default function CocktailDetail() {
           strInstructions={cocktail[0].strInstructions || ''}
           ingredients={cocktail[1]}
         />
-        : ''
+        : <h2 className='px-6 text-2xl text-black text-center font-bold   sm:text-3xl'>
+          This cocktail does not exist!
+        </h2>
       }
     </Layout>
   )

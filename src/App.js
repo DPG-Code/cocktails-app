@@ -7,12 +7,8 @@ function App() {
     <>
       <Layout>
         <CocktailRandom />
-        <div className='shadow-background'></div>
-        <img
-          src={background}
-          alt='background'
-          className='w-full h-screen object-cover absolute'
-        />
+        <div className='z-10 w-full h-full bg-[#000000a1] absolute'></div>
+        <img src={background} alt="background" className='w-full h-full object-cover absolute'/>
       </Layout>
     </>
   );

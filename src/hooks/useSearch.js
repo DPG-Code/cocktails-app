@@ -16,5 +16,5 @@ export default function useSearch() {
     getResultsApi({path, query})
   }, [query])
 
-  return { cocktails }
+  return { cocktails, query }
 }

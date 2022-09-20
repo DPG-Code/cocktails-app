@@ -11,14 +11,14 @@ export default function CocktailByLetter() {
 
   return (
     <Layout>
-      <h2 className='mt-24 mb-12 text-3xl text-white text-center font-bold'>Choose a letter to filter Cocktails!</h2>
+      <h2 className='px-6 mt-24 mb-12 text-2xl text-black text-center font-bold   sm:text-3xl'>Choose a letter to filter Cocktails!</h2>
       <div className='px-6 w-full flex items-center flex-wrap justify-center gap-2'>
         {
           RANDOM_COCKTAIL.map(letter => (
             <button
               key={letter}
               onClick={() => getCocktailsFromApi(letter)}
-              className="w-8 h-8 bg-[#000000ce] text-sm text-white font-bold border-solid border border-white"
+              className="w-6 h-6 bg-black text-xs text-white font-bold rounded   sm:w-8 sm:h-8 sm:text-sm"
             >
               {letter}
             </button>
